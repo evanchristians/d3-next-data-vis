@@ -13,6 +13,7 @@ export default function Home() {
           Data Visualization with <span className="text-yellow-400">D3.js</span>{" "}
           & <span className="text-blue-500">Next.js</span>
         </h1>
+        <p className="mt-5 opacity-40">work in progress</p>
       </main>
     </div>
   );
