@@ -41,8 +41,9 @@ export const Flower = ({ dataset, data }) => {
       });
 
       waveTimeline.to(petalRef, {
-        rotate: petals[key].angle + (Math.round(Math.random()) * 2 - 1) * 8,
-        duration: Math.random() * (3 - 0.5) + 0.5,
+        rotate: petals[key].angle + (Math.round(Math.random()) * 2 - 1) * 7.5,
+        duration: Math.random() * (2 - 0.5) + 0.5,
+        ease: "power1.inOut"
       });
 
       const timeline = gsap.timeline({
@@ -66,9 +67,8 @@ export const Flower = ({ dataset, data }) => {
             scale: 1,
             rotate: petals[key].angle,
             duration: 0.05 * key + 1,
-            ease: "back.out(1.3)",
+            ease: "back.inOut(1.2)",
           },
-          -1
         )
         .add(waveTimeline);
     });
