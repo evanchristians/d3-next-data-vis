@@ -2,4 +2,4 @@
 
 Data Visualisation with [D3](https://d3js.org/) & [Next.js](https://nextjs.org/)
 
-This visualization is based on & uses data from Shirley Wu's (filmflowers repository)[https://github.com/sxywu/filmflowers]
+This visualization is based on & uses data from Shirley Wu's [filmflowers repository](https://github.com/sxywu/filmflowers)
