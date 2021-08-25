@@ -3,14 +3,16 @@ import { gsap } from "gsap";
 import _ from "lodash";
 import React, { useEffect, useRef } from "react";
 
-export const Flower = ({ dataset, data }) => {
+export const Flower = ({ dataset, data, size = 120 }) => {
   const svg = useRef();
-  const petalSize = 70;
 
   const petalPath = "M 0,0 C -25,-15  -10,-40 10,-50 C 10,-40 25,-15 0,0";
   const ratingMinMax = d3.extent(dataset, (d) => +d.imdbRating);
   const votesMinMax = d3.extent(dataset, (d) => +d.imdbVotes.replace(/,/g, ""));
-  const sizeScale = d3.scaleLinear().domain(votesMinMax).range([0.3, 1]);
+  const sizeScale = d3
+    .scaleLinear()
+    .domain(votesMinMax)
+    .range([(size / 70) * 0.3, (size / 70) * 1]);
 
   const numPetalScale = d3
     .scaleQuantize()
@@ -27,7 +29,10 @@ export const Flower = ({ dataset, data }) => {
 
   _.times(numPetals, (i) => {
     petals.push({
-      angle: (360 * i) / numPetals,
+      angle:
+        (360 * i) / numPetals +
+        10 * (Math.random() * 2 - 1) +
+        360 * Math.floor(Math.random() * 2 - 1),
       petalPath,
       fill: colors(i),
     });
@@ -42,8 +47,8 @@ export const Flower = ({ dataset, data }) => {
 
       waveTimeline.to(petalRef, {
         rotate: petals[key].angle + (Math.round(Math.random()) * 2 - 1) * 7.5,
-        duration: Math.random() * (2 - 0.5) + 0.5,
-        ease: "power1.inOut"
+        duration: Math.random() * (1.5 - 0.5) + 0.5,
+        ease: "power1.inOut",
       });
 
       const timeline = gsap.timeline({
@@ -59,25 +64,26 @@ export const Flower = ({ dataset, data }) => {
         .fromTo(
           petalRef,
           {
+            opacity: 0,
             scale: 0,
             transformOrigin: "bottom center",
           },
           {
-            transformOrigin: "bottom center",
+            opacity: 1,
             scale: 1,
             rotate: petals[key].angle,
-            duration: 0.05 * key + 1,
-            ease: "back.inOut(1.2)",
-          },
+            duration: 0.025 * key + 1,
+            ease: "back.out(1.2)",
+          }
         )
         .add(waveTimeline);
     });
   }, []);
 
   return (
-    <svg ref={svg} width={petalSize * 2} height={petalSize * 2}>
+    <svg ref={svg} width={size * 2} height={size * 2}>
       <g
-        transform={`translate(${petalSize}, ${petalSize}) scale(${flowerSize})`}
+        transform={`translate(${size}, ${size}) scale(${flowerSize})`}
         className="flower"
       >
         {petals.map((petal, key) => (
@@ -86,11 +92,19 @@ export const Flower = ({ dataset, data }) => {
             key={key}
             d={petalPath}
             fill={petal.fill}
-            onMouseOver={(ev) =>
+            style={{ opacity: 0 }}
+            onMouseEnter={(ev) =>
               gsap.to(ev.target, {
                 scale: 1.25,
                 duration: 0.5,
                 ease: "back.out(1.7)",
+              })
+            }
+            onMouseLeave={(ev) =>
+              gsap.to(ev.target, {
+                scale: 1,
+                duration: 0.5,
+                ease: "sine.in",
               })
             }
           ></path>

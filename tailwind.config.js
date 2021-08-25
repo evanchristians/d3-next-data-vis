@@ -13,6 +13,9 @@ module.exports = {
           900: "#262837",
         },
       },
+      maxWidth: {
+        content: "fit-content",
+      },
     },
   },
   variants: {
