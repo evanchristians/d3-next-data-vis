@@ -9,10 +9,7 @@ export const Flower = ({ dataset, data }) => {
 
   const petalPath = "M 0,0 C -25,-15  -10,-40 10,-50 C 10,-40 25,-15 0,0";
   const ratingMinMax = d3.extent(dataset, (d) => +d.imdbRating);
-  const votesMinMax = d3.extent(
-    dataset,
-    (d) => +d.imdbVotes.replaceAll(",", "")
-  );
+  const votesMinMax = d3.extent(dataset, (d) => +d.imdbVotes.replace(/,/g, ""));
   const sizeScale = d3.scaleLinear().domain(votesMinMax).range([0.3, 1]);
 
   const numPetalScale = d3
@@ -23,7 +20,7 @@ export const Flower = ({ dataset, data }) => {
   const numPetals = numPetalScale(+data.imdbRating);
 
   const colors = d3.scaleOrdinal(d3.schemeSet1);
-  const flowerSize = sizeScale(+data.imdbVotes.replaceAll(",", ""));
+  const flowerSize = sizeScale(+data.imdbVotes.replace(/,/g, ""));
 
   let petals = [];
   const petalsRef = useRef([]);

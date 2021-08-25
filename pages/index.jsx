@@ -37,8 +37,11 @@ export default function Home({ data }) {
         <div className="flex mt-10 gap-5 flex-wrap justify-center ">
           {data &&
             data.map((d, key) => (
-              <div className="flex flex-col flex-grow items-center px-3 py-5 bg-gray-800">
-                <Flower key={key} data={d} dataset={data} />
+              <div
+                key={key}
+                className="flex flex-col flex-grow items-center px-3 py-5 bg-gray-800"
+              >
+                <Flower data={d} dataset={data} />
                 <div style={{ maxWidth: "14ch" }} className="mt-auto">
                   <p className="flex-shrink">{d.imdbRating}</p>
                   <p className="text-xs">{d.Title}</p>
