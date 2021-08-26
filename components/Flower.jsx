@@ -56,7 +56,7 @@ export const Flower = ({ dataset, data, size = 120 }) => {
           trigger: svg.current,
           start: "top bottom",
           end: "bottom top",
-          toggleActions: "play pause resume pause",
+          toggleActions: "play reset play reset",
         },
       });
 
