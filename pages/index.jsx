@@ -83,9 +83,9 @@ export default function Home({ data }) {
             }}
           />
         </div>
-        <div className="flex mt-10 gap-10 flex-wrap justify-center flex-grow">
-          {filteredData &&
-            filteredData.map((d, key) => (
+        {filteredData && (
+          <div className="flex mt-10 gap-10 flex-wrap justify-center">
+            {filteredData.map((d, key) => (
               <div
                 key={key}
                 className="flex flex-col flex-grow justify-between items-center p-5 max-w-full bg-gray-50"
@@ -101,10 +101,11 @@ export default function Home({ data }) {
                 </div>
               </div>
             ))}
-          {filteredData.length == 0 && (
-            <h3 className="m-auto opacity-50 font-light">No Results</h3>
-          )}
-        </div>
+          </div>
+        )}
+        {filteredData.length == 0 && (
+          <h3 className="m-auto opacity-50 font-light">No Results</h3>
+        )}
       </div>
     </div>
   );
