@@ -101,7 +101,9 @@ export default function Home({ data }) {
                 </div>
               </div>
             ))}
-          {filteredData.length == 0 && <h3 className="my-auto opacity-50 font-light">No Results</h3>}
+          {filteredData.length == 0 && (
+            <h3 className="m-auto opacity-50 font-light">No Results</h3>
+          )}
         </div>
       </div>
     </div>
