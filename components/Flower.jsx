@@ -9,6 +9,7 @@ export const Flower = ({ dataset, data, size = 120 }) => {
     threshold: 0.25,
     rootMargin: "0px",
   });
+
   const petalsRef = useRef([]);
 
   const petalPath = "M 0,0 C -25,-15  -10,-40 10,-50 C 10,-40 25,-15 0,0";
@@ -86,7 +87,10 @@ export const Flower = ({ dataset, data, size = 120 }) => {
       ref={svg}
       width={size * 2}
       height={size * 2}
-      style={{ marginBottom: -size * 0.6 + "px" }}
+      style={{
+        marginBottom: -size * 0.6 + "px",
+        marginTop: -size * 0.2 + "px",
+      }}
     >
       <g
         transform={`translate(${size}, ${size}) scale(${flowerSize})`}
