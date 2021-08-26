@@ -5,7 +5,10 @@ import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
 export const Flower = ({ dataset, data, size = 120 }) => {
-  const { ref: svg, inView } = useInView({ threshold: .75, rootMargin: "0px" });
+  const { ref: svg, inView } = useInView({
+    threshold: 0.25,
+    rootMargin: "0px",
+  });
   const petalsRef = useRef([]);
 
   const petalPath = "M 0,0 C -25,-15  -10,-40 10,-50 C 10,-40 25,-15 0,0";
@@ -79,11 +82,15 @@ export const Flower = ({ dataset, data, size = 120 }) => {
   }, [inView]);
 
   return (
-    <svg ref={svg} width={size * 2} height={size * 2}>
+    <svg
+      ref={svg}
+      width={size * 2}
+      height={size * 2}
+      style={{ marginBottom: -size * 0.6 + "px" }}
+    >
       <g
         transform={`translate(${size}, ${size}) scale(${flowerSize})`}
         className="flower"
-        style={{ marginBottom: -size * 0.6 + "px" }}
       >
         {inView &&
           petals.map((petal, key) => {
