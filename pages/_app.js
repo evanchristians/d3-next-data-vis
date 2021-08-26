@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <main className="bg-gray-900 text-white">
+    <main className="text-gray-900">
       <Head>
         <link
           rel="shortcut icon"
@@ -23,11 +23,16 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <div className="max-w-screen-2xl mx-auto">
+        <Component {...pageProps} />
+      </div>
+      <footer className="bg-black py-4 text-center text-xs">
+        &copy; evanchristians {new Date().getFullYear()}
+      </footer>
     </main>
   );
 }
