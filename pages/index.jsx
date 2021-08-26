@@ -83,7 +83,7 @@ export default function Home({ data }) {
             }}
           />
         </div>
-        <div className="flex mt-10 gap-10 flex-wrap justify-center">
+        <div className="flex mt-10 gap-10 flex-wrap justify-center flex-grow">
           {filteredData &&
             filteredData.map((d, key) => (
               <div
@@ -101,6 +101,7 @@ export default function Home({ data }) {
                 </div>
               </div>
             ))}
+          {filteredData.length == 0 && <h3 className="my-auto opacity-50 font-light">No Results</h3>}
         </div>
       </div>
     </div>
