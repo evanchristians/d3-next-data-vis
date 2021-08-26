@@ -88,14 +88,14 @@ export default function Home({ data }) {
             filteredData.map((d, key) => (
               <div
                 key={key}
-                className="flex flex-col flex-grow justify-center items-center p-5 max-w-full bg-gray-50"
+                className="flex flex-col flex-grow justify-between items-center p-5 max-w-full bg-gray-50"
               >
                 <div className="max-w-content w-full">
                   <p className="mx-auto mt-2">{d.Title}</p>
                   <p className="font-light text-sm">{d.Director}</p>
                 </div>
                 <Flower size={size} data={d} dataset={data} />
-                <div className="my-auto max-w-content w-full flex flex-col">
+                <div className="max-w-content w-full flex flex-col">
                   <p className="font-light text-xl mt-10 ">{d.imdbRating}</p>
                   <p className="font-light mx-auto">{d.imdbVotes} Votes</p>
                 </div>
