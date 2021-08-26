@@ -44,7 +44,10 @@ export default function Home({ data }) {
             https://github.com/sxywu/filmflowers
           </a>
         </p>
-        <div className="w-full mt-20 mr-auto max-w-screen-sm text-left">
+        <div
+          className="w-full mt-20 mx-auto md:ml-0 text-left"
+          style={{ maxWidth: "32ch" }}
+        >
           <p className="mb-3">Flower Size</p>
           <Slider
             value={size}
@@ -58,7 +61,7 @@ export default function Home({ data }) {
             data.map((d, key) => (
               <div
                 key={key}
-                className="flex flex-col flex-grow items-center p-5 bg-gray-800"
+                className="flex flex-col flex-grow items-center p-5"
               >
                 <Flower size={size} data={d} dataset={data} />
                 <div className="my-auto w-full flex flex-col relative">

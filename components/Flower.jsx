@@ -17,7 +17,7 @@ export const Flower = ({ dataset, data, size = 120 }) => {
   const numPetalScale = d3
     .scaleQuantize()
     .domain(ratingMinMax)
-    .range(_.range("3", "15"));
+    .range(_.range("3", "16"));
 
   const numPetals = numPetalScale(+data.imdbRating);
 
