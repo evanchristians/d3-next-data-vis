@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
       <div className="max-w-screen-2xl mx-auto">
         <Component {...pageProps} />
       </div>
-      <footer className="bg-black py-4 text-center text-xs">
+      <footer className="bg-black py-4 text-center text-xs text-white">
         &copy; evanchristians {new Date().getFullYear()}
       </footer>
     </main>
