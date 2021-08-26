@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Flower } from "../components/Flower";
 import Slider from "rc-slider";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import "rc-slider/assets/index.css";
 import * as d3 from "d3";
 import _ from "lodash";
 import { useEffect, useState } from "react";
@@ -26,16 +25,16 @@ export default function Home({ data }) {
           Data Visualization with <span className="text-yellow-400">D3</span> &{" "}
           <span className="text-blue-500">Next.js</span>
         </h1>
-        <p className="mt-5 max-w-prose">
+        <p className="font-light mt-5 max-w-prose">
           A visualization of the relationship between the number of IMDB votes &
           the IMDB rating for movies in the IMDB record rendered with D3 &
           Next.js.
         </p>
-        <p className="mt-5 max-w-prose">
+        <p className="font-light mt-5 max-w-prose">
           The number of votes is represented by the size of the flower & the
           rating is represented by the number of petals.
         </p>
-        <p className="mt-5 max-w-prose">
+        <p className="font-light mt-5 max-w-prose">
           This visualization is based on Shirley Wu's filmflowers repository{" "}
           <a
             className="text-blue-400"
@@ -66,7 +65,7 @@ export default function Home({ data }) {
                 <Flower size={size} data={d} dataset={data} />
                 <div className="my-auto w-full flex flex-col relative">
                   <p className="text-xl mb-2">{d.imdbRating}</p>
-                  <p className="text-xs max-w-content mx-auto">{d.Title}</p>
+                  <p className="font-light max-w-content mx-auto">{d.Title}</p>
                 </div>
               </div>
             ))}

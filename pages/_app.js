@@ -1,5 +1,7 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
+import "rc-slider/assets/index.css";
+import "../styles/main.scss";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -21,7 +23,7 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;400;700&display=swap"
           rel="stylesheet"
         />
       </Head>

@@ -1,0 +1,11 @@
+
+.rc-slider {
+  opacity: .5;
+  &-track {
+    @apply bg-gray-800;
+    opacity: .5;
+  }
+  &-handle {
+    border: none;
+  }
+}
