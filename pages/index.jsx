@@ -3,8 +3,9 @@ import { Flower } from "../components/Flower";
 import Slider from "rc-slider";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import * as d3 from "d3";
-import _, { filter } from "lodash";
+import _ from "lodash";
 import { useEffect, useState } from "react";
+import { InView } from "react-intersection-observer";
 
 export default function Home({ data }) {
   const [filteredData, setFilteredData] = useState(data);
@@ -13,14 +14,14 @@ export default function Home({ data }) {
 
   useEffect(() => {
     ScrollTrigger.refresh();
-  }, [size]);
+  }, [size, searchKey]);
 
   useEffect(() => {
-    setFilteredData(
-      data.filter((d) =>
-        d.Title.toLowerCase().includes(searchKey.toLowerCase())
-      )
+    const filterDiff = _.filter(data, (d) =>
+      d.Title.toLowerCase().includes(searchKey.toLowerCase())
     );
+
+    setFilteredData(filterDiff);
   }, [searchKey]);
 
   return (
@@ -94,7 +95,28 @@ export default function Home({ data }) {
                   <p className="mx-auto mt-2">{d.Title}</p>
                   <p className="font-light text-sm">{d.Director}</p>
                 </div>
-                <Flower size={size} data={d} dataset={data} />
+                <InView>
+                  {({ ref, inView }) => (
+                    <div
+                      ref={ref}
+                      style={{
+                        width: size * 2 + "px",
+                        height: size * 2 + "px",
+                        marginBottom: -size * 0.6 + "px",
+                        marginTop: -size * 0.2 + "px",
+                      }}
+                    >
+                      {inView && (
+                        <Flower
+                          size={size}
+                          data={d}
+                          dataset={data}
+                          inView={inView}
+                        />
+                      )}
+                    </div>
+                  )}
+                </InView>
                 <div className="max-w-content w-full flex flex-col">
                   <p className="font-light text-xl mt-10 ">{d.imdbRating}</p>
                   <p className="font-light mx-auto">{d.imdbVotes} Votes</p>
